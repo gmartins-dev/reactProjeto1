@@ -15,6 +15,12 @@ function Header (){
             <Subtitle>By @guilhermemm-dev</Subtitle>
            
             <div className={styles.iconContent}>
+                
+            <a><Icon 
+                iconName="react"
+                link="https://pt-br.reactjs.org/"
+                /></a>
+                
                 <a><Icon 
                 iconName="github"
                 link="https://github.com/guilhermemm-dev"

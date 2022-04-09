@@ -1,6 +1,7 @@
 import styles from './Game.module.css'
 import GameOption from '../gameOption/GameOption'
 import { useState } from 'react'
+import Icon from '../icon/Icon'
 
 
 
@@ -8,24 +9,61 @@ import { useState } from 'react'
 function Game () {
 
     const [gameState, setGameState] = useState(Array(9).fill(0))
-    console.log (gameState)
+
+    const [currentPlayer, setCurrentPlayer] = useState(1)
+
+    const handleClick = (pos) => {
+
+        if(gameState[pos] == 0){ //verificação se o quadrado esta vazio antes de inserir X ou O
+
+            let newGameState = [...gameState]
+            newGameState[pos] = currentPlayer
+            setCurrentPlayer(currentPlayer * -1)
+            setGameState(newGameState)
+
+        }
+    }
+
+
     return(
 
-        <div className={styles.game}>
-            {
-                gameState.map(
-                    (value, pos) =>
-                    <GameOption 
-                    
-                        key={`game-option-pos-${pos}`}
-                        status={value}
-                    
-                    />
-                )
-                
+       <div className={styles.gameContent}> 
 
-            }       
-        </div>
+            <div className={styles.game}>
+                        {
+                            gameState.map(
+                                (value, pos) =>
+                                <GameOption 
+                                
+                                    key={`game-option-pos-${pos}`}
+                                    status={value}
+                                    onClick={
+                                        () => handleClick(pos)
+                                    }
+                                    
+                                
+                                />
+                            )
+                            
+
+                        }       
+                    </div>
+
+                    <div className={styles.gameInfo}>
+
+                        <h4>Next player: </h4>
+                        {
+                            currentPlayer === 1 && <Icon iconName="circle" />
+
+                        }
+                                                {
+                            currentPlayer === -1 && <Icon iconName="x" />
+                            
+                        }
+
+                    </div>
+
+       </div>
 
     )
 
