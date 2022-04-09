@@ -1,0 +1,11 @@
+.gameOption{
+
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

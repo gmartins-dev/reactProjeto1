@@ -1,5 +1,5 @@
 import Header from '../header/Header'
-
+import Game from '../game/Game'
 
 function GamePage (){
 
@@ -9,6 +9,7 @@ function GamePage (){
            
         <Header />
 
+        <Game />
 
 
 
