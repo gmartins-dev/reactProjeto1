@@ -1,10 +1,25 @@
 import styles from './Game.module.css'
 import GameOption from '../gameOption/GameOption'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Icon from '../icon/Icon'
 
 
 
+const winnerTable=[
+
+    //lines
+    [0,1,2],
+    [3,4,5],
+    [6,7,8]
+    //columns
+    [0,3,6],
+    [1,4,7],
+    [2,5,8]
+    //diagonal
+    [0,4,8],
+    [2,4,6]
+
+]
 
 function Game () {
 
@@ -12,17 +27,36 @@ function Game () {
 
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
+    const [winner,setWinner] = useState(0)
+
     const handleClick = (pos) => {
 
-        if(gameState[pos] == 0){ //verificação se o quadrado esta vazio antes de inserir X ou O
+        if(gameState[pos] === 0 && winner === 0){ //verificação se o quadrado esta vazio antes de inserir X ou O
 
             let newGameState = [...gameState]
             newGameState[pos] = currentPlayer
-            setCurrentPlayer(currentPlayer * -1)
             setGameState(newGameState)
 
         }
     }
+
+    const verifyGame = () => {
+
+        winnerTable.forEach((line) => {
+            
+            const values = line.map((pos) => gameState[pos])
+            const sum = values.reduce( (sum, value) => sum + value)
+            console.log(sum)
+
+            if (sum === 3 | sum === -3) setWinner(sum / 3)
+            })
+    }
+
+    useEffect(() => {
+        setCurrentPlayer(currentPlayer * -1)
+        verifyGame()
+
+    }, [gameState])
 
 
     return(
