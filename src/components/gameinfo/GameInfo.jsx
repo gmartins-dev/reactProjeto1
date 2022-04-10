@@ -36,8 +36,8 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
 
         }
         {
-            <>
-                
+            winner !== 0 &&
+            <>   
             <h4>Finish! Winner: </h4>
             {
                 winner === 1 && <Icon iconName="circle" />
@@ -48,10 +48,7 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
                 winner === -1 && <Icon iconName="x" />
                     
             }
-            
             </>
-
-
         }
         <Button 
         onClick = {onReset}
