@@ -5,16 +5,16 @@ import GameInfo from '../gameinfo/GameInfo'
 
 
 
-const winnerTable=[
+const winnerTable = [
 
     //lines
     [0,1,2],
     [3,4,5],
-    [6,7,8]
+    [6,7,8],
     //columns
     [0,3,6],
     [1,4,7],
-    [2,5,8]
+    [2,5,8],
     //diagonal
     [0,4,8],
     [2,4,6]
@@ -44,11 +44,7 @@ function Game () {
 
         winnerTable.forEach((line) => {
             
-            const values = line.map((pos) => gameState[pos])
-            const sum = values.reduce( (sum, value) => sum + value)
-            console.log(sum)
-
-            if (sum === 3 | sum === -3) setWinner(sum / 3)
+            console.log (line)
             })
     }
 
