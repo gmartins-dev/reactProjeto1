@@ -5,12 +5,15 @@ import styles from './GameInfo.module.css'
 
 import Button from '../button/Button'
 
-function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
+function GameInfo ({ currentPlayer, winner, handleReset, onReset, isDraw }){
 
-    const shouldEnableButton = () => {
+    // const shouldEnableButton = () => {
 
-        if(winner !== 0) return true
-    }
+    //     if(winner !== 0) return true
+    //     if(isDraw) return true
+    // }
+
+    const shouldEnableButton = () => winner !== 0 || isDraw  //versao mais optimizada/enchuta da funcao acima
 
     return(
 
@@ -19,7 +22,7 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
 
         {
 
-            winner === 0 &&
+            !isDraw && winner === 0 &&
                 <>
                     
                     <h4>Next player: </h4>
@@ -36,7 +39,7 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
 
         }
         {
-            winner !== 0 &&
+            !isDraw && winner !== 0 &&
             <>   
             <h4>Finish! Winner: </h4>
             {
@@ -49,6 +52,9 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset }){
                     
             }
             </>
+        }
+        {
+            isDraw && <h4>Draw! </h4>
         }
         <Button 
         onClick = {onReset}

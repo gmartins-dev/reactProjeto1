@@ -8,7 +8,7 @@ const GameIcon = ({ iconName }) =>
 <Icon iconName = {iconName} size="25px" />
 
 
-function GameOption ({status, onClick, isWinner}) {
+function GameOption ({status, onClick, isWinner, isDraw}) {
 
 
     return (
@@ -17,7 +17,8 @@ function GameOption ({status, onClick, isWinner}) {
         className={
                 classNames(
                     styles.gameOption, {
-                    [styles.winner]: isWinner
+                    [styles.winner]: isWinner,
+                    [styles.draw]: isDraw
                     }
                 )
             }
