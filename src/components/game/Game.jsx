@@ -29,6 +29,9 @@ function Game () {
 
     const [winner,setWinner] = useState(0)
 
+    const [winnerLine, setWinnerLine] = useState([])
+
+
     const handleClick = (pos) => {
 
         if(gameState[pos] === 0 && winner === 0){ //verificação se o quadrado esta vazio antes de inserir X ou O
@@ -48,7 +51,10 @@ function Game () {
             
             const sum = values.reduce((sum, value) => sum + value)
             
-            if(sum === 3 || sum === -3) setWinner(sum / 3)
+            if(sum === 3 || sum === -3){
+                setWinner(sum / 3)
+                setWinnerLine(line)
+            } 
 
         })
     }
@@ -58,9 +64,12 @@ function Game () {
 
         setGameState(Array(9).fill(0))
         setWinner(0)
+        setWinnerLine([])
 
     }
 
+    const verifyWinnerLine = (pos) => 
+           winnerLine.find((value) => value === pos) !== undefined
 
     useEffect(() => {
         setCurrentPlayer(currentPlayer * -1)
@@ -84,7 +93,7 @@ function Game () {
                                     onClick={
                                         () => handleClick(pos)
                                     }
-                                    
+                                    isWinner={verifyWinnerLine(pos)}
                                 
                                 />
                             )
