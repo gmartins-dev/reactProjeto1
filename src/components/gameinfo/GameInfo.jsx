@@ -43,7 +43,7 @@ function GameInfo ({ currentPlayer, winner, handleReset, onReset, isDraw }){
             <>   
             <h4>Finish! Winner: </h4>
             {
-                winner === 1 && <Icon iconName="circle" />
+                winner === 1 && <Icon iconName="circle" />          
 
             }
                                         
