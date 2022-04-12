@@ -2,7 +2,7 @@ import styles from './Game.module.css'
 import GameOption from '../gameOption/GameOption'
 import { useState, useEffect } from 'react'
 import GameInfo from '../gameinfo/GameInfo'
-
+import Score from '../score/Score'
 
 
 const winnerTable = [
@@ -93,7 +93,7 @@ function Game () {
 
 
     return(
-
+        <>
        <div className={styles.gameContent}> 
 
             <div className={styles.game}>
@@ -125,6 +125,8 @@ function Game () {
             
             />
        </div>
+        <Score />
+       </>
 
     )
 
