@@ -5,7 +5,7 @@
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    background-color: blue;
+    background-color: #4E73DF;
     color: white;
 }
 
@@ -13,13 +13,14 @@
 
 .button:hover{
 
-    background-color: aqua;
+    background-color: #42FF00;
 
 }
 
 .button:disabled{
 
     cursor: default;
-    background-color: #61AEFF;
+    background-color: #90aece;
+    display: none;
 
 }

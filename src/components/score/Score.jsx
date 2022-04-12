@@ -7,7 +7,7 @@ export default function Score ( {circleWinnerScore, xWinnerScore} ){
     return(
 
         <>
-            <h4>Score:</h4>
+            <h4 className={styles.scoreTitle}><u>Score:</u></h4>
             <div className={styles.score}>
 
                 <div className={styles.scoreContent}>
